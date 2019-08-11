@@ -23,8 +23,8 @@ let dealersScore = document.getElementById("dealers_score");
 let resultsArea = document.getElementById("results_area");
 let newGameButton = document.getElementById("new_game_button");
 let dealButton = document.getElementById("deal_button");
-let hitButton = document.getElementById("hit_button");
-let stayButton = document.getElementById("stay_button");
+let twistButton = document.getElementById("twist_button");
+let stickButton = document.getElementById("stick_button");
 
 
   // Game variables
@@ -78,7 +78,7 @@ dealButton.addEventListener("click", function(){
 
 
 // Player adds cards
-hitButton.addEventListener("click", function(){
+twistButton.addEventListener("click", function(){
   
   deal(playersCards, deck);
   
@@ -91,7 +91,7 @@ hitButton.addEventListener("click", function(){
 
 
 // Dealer plays
-stayButton.addEventListener("click", function(){
+stickButton.addEventListener("click", function(){
   
   var status = "";
   
@@ -164,10 +164,10 @@ function inGameState() {
   playersHeader.style.visibility = "visible";
   dealersHeader.style.visibility = "visible";
   dealButton.style.visibility = "hidden";
-  hitButton.style.visibility = "visible";
-  stayButton.style.visibility = "visible";
-  hitButton.style.display = "inline";
-  hitButton.style.display = "inline";
+  twistButton.style.visibility = "visible";
+  stickButton.style.visibility = "visible";
+  twistButton.style.display = "inline";
+  twistButton.style.display = "inline";
   
 }
 
@@ -175,8 +175,8 @@ function inGameState() {
 function endGameState() {
 
   newGameButton.style.visibility = "visible";
-  hitButton.style.visibility = "hidden";
-  stayButton.style.visibility = "hidden";
+  twistButton.style.visibility = "hidden";
+  stickButton.style.visibility = "hidden";
   
 }
 

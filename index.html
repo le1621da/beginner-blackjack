@@ -18,10 +18,10 @@
     <p id="players_hand"></p>
     <p id="players_score"></p>
     
-    <button id="deal_button">Deal</button>
+    <button id="deal_button" onclick="changeColor()">Deal</button>
     <div>
-      <button id="stay_button">Stick</button>
-      <button id="hit_button">Twist</button>
+      <button id="stick_button" onclick="changeColor()">Stick</button>
+      <button id="twist_button" onclick="changeColor()">Twist</button>
     </div>
     
     <h4 id="dealers_header">Dealer has:</h4>
@@ -29,14 +29,19 @@
     <p id="dealers_score"></p>
     <h2 id="results_area"></h2>
     
-    <button id="new_game_button">New Game</button>
+    <button id="new_game_button" onclick="changeColor()">New Game</button>
     
     <br><br>
     <a href="test/run_browser_tests.html" target="_blank">Run Unit Tests</a> 
 
     
     <script data-main="includes/scripts/main" src="includes/scripts/require.js"></script>
-    <script type="module" src="includes/scripts/main.js"></script>  
+    <script type="module" src="includes/scripts/main.js"></script>
+    <script>
+      function changeColor(button_id){
+        document.getElementById(id).style.color = "blue";
+      }
+    </script>  
     
   </body>
 
