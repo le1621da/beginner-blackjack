@@ -56,9 +56,6 @@ async function setGameStateVariables() {
 
     describe("02: Check the state of the home page", function(){
       it("The page is in State 1", function(){checkArrayValuesAreAllTrue(state01).should.be.true;})
-
-      it("DEBUG 01", function(){console.log(state01);})
-
       it("The page is NOT in State 2", function(){checkArrayValuesAreAllTrue(state02).should.be.false;})
       it("The page is NOT in State 3", function(){checkArrayValuesAreAllTrue(state03).should.be.false;})
       it("The page is NOT in State 4", function(){checkArrayValuesAreAllTrue(state04).should.be.false;})

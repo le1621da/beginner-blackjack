@@ -62,9 +62,6 @@ describe("TC102: VERIFY THE STATE OF THE PAGE AFTER A GAME HAS BEEN STARTED", fu
   describe("03: Check the state of the new game page", function(){
     it("The page is NOT in State 1", function(){checkArrayValuesAreAllTrue(state01).should.be.false;})
     it("The page is in State 2", function(){checkArrayValuesAreAllTrue(state02).should.be.true;})
-    
-    it("DEBUG 02", function(){console.log(state02);})
-
     it("The page is NOT in State 3", function(){checkArrayValuesAreAllTrue(state03).should.be.false;})
     it("The page is NOT in State 4", function(){checkArrayValuesAreAllTrue(state04).should.be.false;})
     it("The page is NOT in State 5", function(){checkArrayValuesAreAllTrue(state05).should.be.false;})
