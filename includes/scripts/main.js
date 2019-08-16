@@ -1,7 +1,5 @@
 //
 // Blackjack
-// by LRx
-// with Mark Zamoyta
 //
 
 requirejs(["helper/blackjackFunctions"], function(blackjackFunctions) {
