@@ -234,7 +234,7 @@ const {buildADeckOfCards, shuffleADeckOfCards, buildAndShuffleADeckOfCards, deal
       let shuffledDeck = shuffleADeckOfCards(deck);
       let newDeck = buildADeckOfCards();
       it("The original deck has 0 cards after being shuffled", function(){deck.length.should.equal(0);});
-      it("The shuffled deck has 2 cards", function(){shuffledDeck.length.should.equal(52);}); 
+      it("The shuffled deck has 52 cards", function(){shuffledDeck.length.should.equal(52);}); 
       it("A shuffled deck != an unshuffled deck", function(){shuffledDeck.should.not.equal(newDeck);}); 
 
     })

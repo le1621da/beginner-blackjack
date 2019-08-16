@@ -14,7 +14,7 @@ const {buildADeckOfCards, shuffleADeckOfCards, buildAndShuffleADeckOfCards, deal
 
         let resultA = checkScores(true, 22, 1);
         it("Result A: \"Winner: Dealer\"", function(){resultA.should.have.property("winner").equals("Dealer");});
-        it("Reason: The player has bust.", function(){resultA.should.have.property("string").equals("Player busts.");});
+        it("Reason: The player has bust", function(){resultA.should.have.property("string").equals("Player busts.");});
         
         let resultB = checkScores(true, 21, 1); 
         it("Result B: \"Winner: Player\"", function(){resultB.should.have.property("winner").equals("Player");});

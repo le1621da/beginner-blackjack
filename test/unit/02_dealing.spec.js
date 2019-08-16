@@ -21,11 +21,11 @@ const {buildADeckOfCards, shuffleADeckOfCards, buildAndShuffleADeckOfCards, deal
       remainingDeck = dealt.deckOfCards;
 
       it("A deck has 51 cards after a card has been dealt", function(){remainingDeck.length.should.equal(51);})
-      it("A player has a 2 after being dealt from an unshuffled deck", function(){playersHand[0].should.have.property("suit").equals("Spades");})
-      it("A player has a Spade after being dealt from an unshuffled deck", function(){playersHand[0].should.have.property("rank").equals("Two");})
-      it("A player's hand is worth 2 points after being dealt from an unshuffled deck", function(){playersHand[0].should.have.property("value").equals(2);})
-      it("A player's hand is not empty after they've been dealt 1 card", function(){playersHand.should.not.be.empty;})
-      it("The dealer's hand is empty after the the player has been dealt 1 ccard", function(){dealersHand.should.be.empty;})
+      it("A player has a 2 after being dealt a card from an unshuffled deck", function(){playersHand[0].should.have.property("suit").equals("Spades");})
+      it("A player has a Spade after being dealt a card from an unshuffled deck", function(){playersHand[0].should.have.property("rank").equals("Two");})
+      it("A player's hand is worth 2 points after being dealt a card from an unshuffled deck", function(){playersHand[0].should.have.property("value").equals(2);})
+      it("A player's hand is not empty after they've been dealt a card", function(){playersHand.should.not.be.empty;})
+      it("The dealer's hand is empty after the the player has been dealt a card", function(){dealersHand.should.be.empty;})
 
     })
 
