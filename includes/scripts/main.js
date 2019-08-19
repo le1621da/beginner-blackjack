@@ -40,7 +40,6 @@ let isGameStarted = false,
 
 // Start a new game... look out for a click and then execute the function
 newGameButton.addEventListener("click", function(){
-  
   if (isGameOver) resetGameVariables();
   
   // Set game variables
@@ -48,18 +47,15 @@ newGameButton.addEventListener("click", function(){
   isGameOver = false;
   hasPlayerWon = false;
   
-  
   // Amend the html
-  newGameState();
-  
+  setNewGameState();
 })
 
 
 // Player triggers 'deal'
 dealButton.addEventListener("click", function(){
-  
   // Amend the html
-  inGameState();
+  setInGameState();
   
   // Opening deal
   deck = buildAndShuffleADeckOfCards();
@@ -77,20 +73,17 @@ dealButton.addEventListener("click", function(){
 
 // Player adds cards
 twistButton.addEventListener("click", function(){
-  
   deal(playersCards, deck);
   
   // Update results and output
   checkGameStatus(false);
   playersHandAndScoreString = outputPlayersScore();
   outputDealersScore();
-  
 })
 
 
 // Dealer plays
-stickButton.addEventListener("click", function(){
-  
+stickButton.addEventListener("click", function(){  
   var status = "";
   
   // Dealer plays until there's a winner...
@@ -99,46 +92,39 @@ stickButton.addEventListener("click", function(){
     status = checkGameStatus(true);
     outputDealersScore();
   }
-  while (status == "Pending");
+  while (status === "Pending");
   
 })
 
 
-function outputPlayersScore(){   
-  
+function outputPlayersScore(){ 
   playersHand.innerText = getHandString(playersCards);
   playersScore.innerText = "(Score " + playerScore + ")";
 }
 
 
-function outputDealersScore(){
-  
-  dealersHand.innerText = getHandString(dealersCards);
+function outputDealersScore(){dealersHand.innerText = getHandString(dealersCards);
   dealersScore.innerText = "(Score " + dealerScore + ")";
 }
 
 
 function checkGameStatus(playerHasFinished){
-  
   playerScore = getScore(playersCards);
   dealerScore = getScore(dealersCards);
   let status = checkScores(playerHasFinished, playerScore, dealerScore);
   
-  if (status.winner != "Pending") {
+  if (status.winner !== "Pending") {
     resultsArea.innerText = "WINNER: " + status.winner + ".  ";
     isGameOver = true;
   }
   
-  //Amend the html
-  if (isGameOver) endGameState();
-  
+  if (isGameOver) setEndGameState();
   return status.winner;
   
 }
 
 
-function newGameState(){
-
+function setNewGameState(){
   welcomeText.innerText = "";
 
   playersHeader.style.visibility = "hidden";
@@ -153,12 +139,10 @@ function newGameState(){
   dealButton.style.visibility = "visible";
   
   resultsArea.innerText = "";
-
 }
 
 
-function inGameState() {
-  
+function setInGameState() {
   playersHeader.style.visibility = "visible";
   dealersHeader.style.visibility = "visible";
   dealButton.style.visibility = "hidden";
@@ -166,16 +150,13 @@ function inGameState() {
   stickButton.style.visibility = "visible";
   twistButton.style.display = "inline";
   twistButton.style.display = "inline";
-  
 }
 
 
-function endGameState() {
-
+function setEndGameState() {
   newGameButton.style.visibility = "visible";
   twistButton.style.visibility = "hidden";
   stickButton.style.visibility = "hidden";
-  
 }
 
 
