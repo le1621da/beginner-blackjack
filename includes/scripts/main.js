@@ -40,7 +40,12 @@ let isGameStarted = false,
 
 // Start a new game... look out for a click and then execute the function
 newGameButton.addEventListener("click", function(){
-  if (isGameOver) resetGameVariables();
+  console.log("DEBUG: newGameButton");
+
+  if (isGameOver) {
+    console.log("DEBUG: call resetGameVariables");
+    resetGameVariables();
+  } 
   
   // Set game variables
   isGameStarted = true;
@@ -48,13 +53,17 @@ newGameButton.addEventListener("click", function(){
   hasPlayerWon = false;
   
   // Amend the html
+  console.log("DEBUG: call setNewGameState");
   setNewGameState();
 })
 
 
 // Player triggers 'deal'
 dealButton.addEventListener("click", function(){
+  console.log("DEBUG: dealButton");
+
   // Amend the html
+  console.log("DEBUG: call setInGameState");
   setInGameState();
   
   // Opening deal
@@ -64,6 +73,7 @@ dealButton.addEventListener("click", function(){
   deal(dealersCards, deck);
   
   // Update scores and output
+  console.log("DEBUG: call checkGameStatus");
   checkGameStatus(false);
   playersHandAndScoreString = outputPlayersScore();
   dealersHandAndScoreString = outputDealersScore();
@@ -73,9 +83,11 @@ dealButton.addEventListener("click", function(){
 
 // Player adds cards
 twistButton.addEventListener("click", function(){
+  console.log("DEBUG: twistButton");
   deal(playersCards, deck);
   
   // Update results and output
+  console.log("DEBUG: ");
   checkGameStatus(false);
   playersHandAndScoreString = outputPlayersScore();
   outputDealersScore();
@@ -84,6 +96,8 @@ twistButton.addEventListener("click", function(){
 
 // Dealer plays
 stickButton.addEventListener("click", function(){  
+  console.log("DEBUG: stickButton");
+
   var status = "";
   
   // Dealer plays until there's a winner...
@@ -97,34 +111,50 @@ stickButton.addEventListener("click", function(){
 })
 
 
-function outputPlayersScore(){ 
+function outputPlayersScore(){
+  console.log("DEBUG: outputPlayersScore");
+
   playersHand.innerText = getHandString(playersCards);
   playersScore.innerText = "(Score " + playerScore + ")";
 }
 
 
 function outputDealersScore(){dealersHand.innerText = getHandString(dealersCards);
+  console.log("DEBUG: outputDealersScore");
+
   dealersScore.innerText = "(Score " + dealerScore + ")";
 }
 
 
 function checkGameStatus(playerHasFinished){
+  console.log("DEBUG: checkGameStatus");
+
   playerScore = getScore(playersCards);
   dealerScore = getScore(dealersCards);
   let status = checkScores(playerHasFinished, playerScore, dealerScore);
+
+  console.log("DEBUG: playerScore = " + playerScore);
+  console.log("DEBUG: dealerScore = " + dealerScore);
+  console.log("DEBUG: statuswinner = " + status.winner);
   
   if (status.winner !== "Pending") {
+    console.log("DEBUG: ");
     resultsArea.innerText = "WINNER: " + status.winner + ".  ";
     isGameOver = true;
   }
   
-  if (isGameOver) setEndGameState();
+  if (isGameOver) {
+    console.log("DEBUG: call setEndGameState");
+    setEndGameState();
+  }
   return status.winner;
   
 }
 
 
 function setNewGameState(){
+  console.log("DEBUG: setNewGameState");
+
   welcomeText.innerText = "";
 
   playersHeader.style.visibility = "hidden";
@@ -143,6 +173,8 @@ function setNewGameState(){
 
 
 function setInGameState() {
+  console.log("DEBUG: setInGameState");
+
   playersHeader.style.visibility = "visible";
   dealersHeader.style.visibility = "visible";
   dealButton.style.visibility = "hidden";
@@ -154,6 +186,8 @@ function setInGameState() {
 
 
 function setEndGameState() {
+  console.log("DEBUG: setEndGameState");
+
   newGameButton.style.visibility = "visible";
   twistButton.style.visibility = "hidden";
   stickButton.style.visibility = "hidden";
@@ -161,6 +195,8 @@ function setEndGameState() {
 
 
 function resetGameVariables(){
+    console.log("DEBUG: resetGameVariables");
+
     isGameStarted = false;
     isGameOver = false;
     hasPlayerWon = false;
