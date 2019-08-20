@@ -26,7 +26,8 @@ let stickButton = document.getElementById("stick_button");
 
 
   // Game variables
-let isGameStarted = false,
+let isDebugMode = false,
+    isGameStarted = false,
     isGameOver = false,
     hasPlayerWon = false,
     dealersCards = [],
@@ -55,6 +56,8 @@ newGameButton.addEventListener("click", function(){
   // Amend the html
   console.log("DEBUG: call setNewGameState");
   setNewGameState();
+
+  if (isDebugMode) debugVariables();
 })
 
 
@@ -78,6 +81,7 @@ dealButton.addEventListener("click", function(){
   playersHandAndScoreString = outputPlayersScore();
   dealersHandAndScoreString = outputDealersScore();
   
+  if (isDebugMode) debugVariables();
 })
 
 
@@ -87,10 +91,12 @@ twistButton.addEventListener("click", function(){
   deal(playersCards, deck);
   
   // Update results and output
-  console.log("DEBUG: ");
+  console.log("DEBUG: call checkGameStatus");
   checkGameStatus(false);
   playersHandAndScoreString = outputPlayersScore();
   outputDealersScore();
+
+  if (isDebugMode) debugVariables();
 })
 
 
@@ -107,6 +113,8 @@ stickButton.addEventListener("click", function(){
     outputDealersScore();
   }
   while (status === "Pending");
+
+  if (isDebugMode) debugVariables();
   
 })
 
@@ -116,6 +124,8 @@ function outputPlayersScore(){
 
   playersHand.innerText = getHandString(playersCards);
   playersScore.innerText = "(Score " + playerScore + ")";
+
+  if (isDebugMode) debugVariables();
 }
 
 
@@ -123,6 +133,8 @@ function outputDealersScore(){dealersHand.innerText = getHandString(dealersCards
   console.log("DEBUG: outputDealersScore");
 
   dealersScore.innerText = "(Score " + dealerScore + ")";
+
+  if (isDebugMode) debugVariables();
 }
 
 
@@ -147,6 +159,8 @@ function checkGameStatus(playerHasFinished){
     console.log("DEBUG: call setEndGameState");
     setEndGameState();
   }
+
+  if (isDebugMode) debugVariables();
   return status.winner;
   
 }
@@ -169,6 +183,8 @@ function setNewGameState(){
   dealButton.style.visibility = "visible";
   
   resultsArea.innerText = "";
+
+  if (isDebugMode) debugVariables();
 }
 
 
@@ -182,6 +198,8 @@ function setInGameState() {
   stickButton.style.visibility = "visible";
   twistButton.style.display = "inline";
   twistButton.style.display = "inline";
+
+  if (isDebugMode) debugVariables();
 }
 
 
@@ -191,6 +209,8 @@ function setEndGameState() {
   newGameButton.style.visibility = "visible";
   twistButton.style.visibility = "hidden";
   stickButton.style.visibility = "hidden";
+
+  if (isDebugMode) debugVariables();
 }
 
 
@@ -206,4 +226,20 @@ function resetGameVariables(){
     playerScore = 0;
     playersHandAndScoreString = "";
     deck = [];
+
+    if (isDebugMode) debugVariables();
+}
+
+
+function debugVariables(){  
+  console.log("isGameStarted = " + isGameStarted); 
+  console.log("isGameOver = " + isGameOver); 
+  console.log("hasPlayerWon = " + hasPlayerWon); 
+  console.log("dealersCards = " + dealersCards); 
+  console.log("playersCards = " +playersCards ); 
+  console.log("dealerScore = " + dealerScore); 
+  console.log("playerScore = " + playerScore); 
+  console.log("playersHandAndScoreString = " + playersHandAndScoreString); 
+  console.log("dealersHandAndScoreString = " + dealersHandAndScoreString); 
+  console.log("deck = " + deck); 
 }
