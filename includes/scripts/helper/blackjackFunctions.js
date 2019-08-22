@@ -131,11 +131,4 @@ function printDeck(deck){
   }); 
 }
   
-//exports = {buildADeckOfCards, shuffleADeckOfCards, buildAndShuffleADeckOfCards, deal, getHandString, getScore, checkScores};
-exports.buildADeckOfCards = buildADeckOfCards;
-exports.shuffleADeckOfCards = shuffleADeckOfCards;
-exports.buildAndShuffleADeckOfCards = buildAndShuffleADeckOfCards;
-exports.deal = deal;
-exports.getHandString = getHandString;
-exports.getScore = getScore;
-exports.checkScores = checkScores;
+module.exports = {buildADeckOfCards, shuffleADeckOfCards, buildAndShuffleADeckOfCards, deal, getHandString, getScore, checkScores};
