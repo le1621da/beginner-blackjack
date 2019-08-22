@@ -4,14 +4,6 @@
   <head>
     <title>Blackjack</title>
     <link rel="stylesheet" type="text/css" href="includes/styles/styles.css">   
-    <script data-main="includes/scripts/main" src="includes/scripts/require.js"></script>
-    <script type="module" src="includes/scripts/main.js"></script>  
-    <meta http-equiv="cache-control" content="max-age=0">
-    <meta http-equiv="cache-control" content="no-cache">
-    <meta http-equiv="expires" content="-1">
-    <meta http-equiv="expires" content="Tue, 01 Jan 1980 11:00:00 GMT">
-    <meta http-equiv="pragma" content="no-cache">
-
   </head>
 
   <body>
@@ -20,7 +12,7 @@
     <br>
     
     <h3 id="welcome_text">Welcome to Blackjack!</h3>
-    <h5>v202180118158</h3>
+    <h5>v22080805</h3>
     
     <h4 id="players_header">Player has:</h4>
     <p id="players_hand"></p>
@@ -38,8 +30,9 @@
     <h2 id="results_area"></h2>
     
     <button id="new_game_button">New Game</button>
-    
-    <br><br>
+
+    <script data-main="includes/scripts/blackjack" src="includes/scripts/require.js"></script>
+    <script type="module" src="includes/scripts/blackjack.js"></script>  
 
     
   </body>
