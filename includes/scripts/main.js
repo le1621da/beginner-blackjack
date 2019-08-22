@@ -150,7 +150,7 @@ function checkGameStatus(playerHasFinished){
   console.log("DEBUG: statuswinner = " + status.winner);
   
   if (status.winner !== "Pending") {
-    console.log("DEBUG: Status <> Pending");
+    console.log("DEBUG: ");
     resultsArea.innerText = "WINNER: " + status.winner + ".  ";
     isGameOver = true;
   }
