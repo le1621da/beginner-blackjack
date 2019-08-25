@@ -5,8 +5,7 @@ var chai = require("chai");
 chai.should();
 
 // import the functions
-const {buildADeckOfCards, shuffleADeckOfCards, buildAndShuffleADeckOfCards, deal, getHandString, getScore, checkScores} = require("../../includes/scripts/helper/blackjackFunctions.js");
-  
+const {buildADeckOfCards, shuffleADeckOfCards, buildAndShuffleADeckOfCards, deal, getHandString, getScore, checkScores} = require("../../src/includes/scripts/cards.js");
  
 
   describe("TC003: VERIFY THE SCORING FUNCTIONS", function(){
