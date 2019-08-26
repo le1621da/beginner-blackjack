@@ -5,9 +5,9 @@ var chai = require("chai");
 chai.should();
 
 // import the functions
-const {buildADeckOfCards, shuffleADeckOfCards, buildAndShuffleADeckOfCards, deal, getHandString, getScore, checkScores} = require("../../src/includes/scripts/cards.js");
+const {buildADeckOfCards, shuffleADeckOfCards, buildAndShuffleADeckOfCards, deal, getHandString, getScore, checkScores} = require("../../../src/includes/scripts/cards.js");
   
-  describe("TC001: VERIFY THE DECK", function(){
+  describe("VERIFY THE DECK", function(){
 
     describe("01: Check a newly built deck", function(){
 

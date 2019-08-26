@@ -14,9 +14,9 @@ const driver = new webdriver.Builder()
 
 
 // import Selenium helpers
-const SeleniumWebdriverInteractions = require("../helper/seleniumWebdriverInteractions.js");
+const SeleniumWebdriverInteractions = require("../../helper/seleniumWebdriverInteractions.js");
 const perform = new SeleniumWebdriverInteractions(driver, until, promise);
-const {getScores, getState01, getState02, getState03, getState04, getState05, checkArrayValuesAreAllTrue} = require("../helper/seleniumBlackjackFunctions");
+const {getScores, getState01, getState02, getState03, getState04, getState05, checkArrayValuesAreAllTrue} = require("../../helper/seleniumBlackjackFunctions");
 
 
 // Initialise game variables
@@ -62,7 +62,7 @@ async function setDealerHasWon() {
 
 
 // Tests
-describe("TC105: VERIFY THE STATE OF THE GAME AFTER THE PLAYER STICKS", function(){
+describe("VERIFY THE STATE OF THE GAME AFTER THE PLAYER STICKS", function(){
   before(function(){
     return perform.loadPage(LANDING_PAGE);
   })

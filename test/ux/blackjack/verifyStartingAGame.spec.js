@@ -13,9 +13,9 @@ const driver = new webdriver.Builder()
   .build();
 
 // import Selenium helpers
-const SeleniumWebdriverInteractions = require("../helper/seleniumWebdriverInteractions.js");
+const SeleniumWebdriverInteractions = require("../../helper/seleniumWebdriverInteractions.js");
 const perform = new SeleniumWebdriverInteractions(driver, until, promise);
-const {getScores, getState01, getState02, getState03, getState04, getState05, checkArrayValuesAreAllTrue} = require("../helper/seleniumBlackjackFunctions");
+const {getScores, getState01, getState02, getState03, getState04, getState05, checkArrayValuesAreAllTrue} = require("../../helper/seleniumBlackjackFunctions");
 
 // Initialise game variables
 const LANDING_PAGE = "file:///Users/Lee/workspace/beginner-blackjack/src/blackjack.html";
@@ -38,7 +38,7 @@ async function setGameStateVariables() {
   result = "";
 }
 
-describe("TC102: VERIFY THE STATE OF THE PAGE AFTER A GAME HAS BEEN STARTED", function(){
+describe("VERIFY THE STATE OF THE PAGE AFTER A GAME HAS BEEN STARTED", function(){
   before(function(){
     return perform.loadPage(LANDING_PAGE);
   })

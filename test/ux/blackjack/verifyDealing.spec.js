@@ -14,9 +14,9 @@ const driver = new webdriver.Builder()
 
 
 // import Selenium helpers
-const SeleniumWebdriverInteractions = require("../helper/seleniumWebdriverInteractions.js");
+const SeleniumWebdriverInteractions = require("../../helper/seleniumWebdriverInteractions.js");
 const perform = new SeleniumWebdriverInteractions(driver, until, promise);
-const {getScores, getState01, getState02, getState03, getState04, getState05, checkArrayValuesAreAllTrue} = require("../helper/seleniumBlackjackFunctions");
+const {getScores, getState01, getState02, getState03, getState04, getState05, checkArrayValuesAreAllTrue} = require("../../helper/seleniumBlackjackFunctions");
 
 
 // Initialise game variables
@@ -29,7 +29,6 @@ var state05;
 var gameScores;
 var playersScore;
 var playerHasWon = false;
-var dealerHasWon = false;
 
 // Set game variables
 async function setGameStateVariables() {
@@ -40,86 +39,53 @@ async function setGameStateVariables() {
   state05 = await getState05(driver);
   gameScores = await getScores(driver);
   playersScore = parseInt(gameScores[0], 10);
-  dealersScore = parseInt(gameScores[1], 10);
   result = "";
 }
 
 async function setPlayerHasWon() {
   if (playersScore === 21) playerHasWon = true;
-}
-
-async function setDealerHasWon() {
-  if (playersScore > 21) dealerHasWon = true;
+  result = "WINNER: Player.  "
 }
 
 
 // Tests
-describe("TC104: VERIFY THE STATE OF THE GAME AFTER THE PLAYER TWISTS", function(){
+describe("VERIFY THE STATE OF THE GAME AFTER THE DEAL", function(){
   before(function(){
     return perform.loadPage(LANDING_PAGE);
   })
-
 
   after(function(){
     driver.quit();
   })
 
-
   describe("01: Start a new game", function(){
     it("The new game button has been clicked", function(){return perform.clickButton("new_game_button").should.eventually.be.true;});
   })
-
   
   describe("02: Deal", function(){
     it("The deal button has been clicked", function(){return perform.clickButton("deal_button").should.eventually.be.true;});
   })
 
-
   describe("03: Fetch results...", function(){
     it("Local variables have been updated", async() => {
       await setGameStateVariables();
       await setPlayerHasWon();
-      await setDealerHasWon();
     })
   })
 
-
-  describe("04: Twist", function(){
-    it("The twist button has been clicked", function(){if (!playerHasWon) return perform.clickButton("twist_button").should.eventually.be.true;});
-  })
-
-
-  describe("05: Fetch results...", function(){
-    it("Local variables have been updated", async() => {
-      await setGameStateVariables();
-      await setPlayerHasWon();
-      await setDealerHasWon();
-    })
-  })
-
-
-  describe("06: Check the state of the page after the twist", function() {
+  describe("04: Check the state of the page after the deal", function() {
     it("The page is NOT in State 1", function(){checkArrayValuesAreAllTrue(state01).should.be.false;})
-    
     it("The page is NOT in State 2", function(){checkArrayValuesAreAllTrue(state02).should.be.false;})
-    
-    it("IF player's score < 21 THEN the page is in State 3", function(){if (!playerHasWon && !dealerHasWon) checkArrayValuesAreAllTrue(state03).should.be.true;})
-    it("IF player's score < 21 THEN the page is NOT in State 4", function(){if (!playerHasWon && !dealerHasWon) checkArrayValuesAreAllTrue(state04).should.be.false;})
-    
+    it("IF player's score < 21 THEN the page is in State 3", function(){if (!playerHasWon) checkArrayValuesAreAllTrue(state03).should.be.true;})
+    it("IF player's score < 21 THEN the page is NOT in State 4", function(){if (!playerHasWon) checkArrayValuesAreAllTrue(state04).should.be.false;})
     it("IF player's score = 21 THEN the page is NOT in State 3", function(){if (playerHasWon) checkArrayValuesAreAllTrue(state03).should.be.false;})
     it("IF player's score = 21 THEN the page is in State 4", function(){if (playerHasWon) checkArrayValuesAreAllTrue(state04).should.be.true;})
-    
-    it("IF player's score > 21 THEN the page is NOT in State 3", function(){if (dealerHasWon) checkArrayValuesAreAllTrue(state03).should.be.false;})
-    it("IF player's score > 21 THEN the page is in State 4", function(){if (dealerHasWon) checkArrayValuesAreAllTrue(state04).should.be.true;})
-    
     it("The page is NOT in State 5", function(){checkArrayValuesAreAllTrue(state05).should.be.false;})
   })
 
-
-  describe("07: Check the text values after the twist", function(){
-    it("IF player's score < 21 THEN there's no winner declared", function(){if (!playerHasWon && !dealerHasWon) return perform.getElementText("results_area").should.eventually.equal("");});
+  describe("05: Check the text values after the deal", function(){
+    it("IF player's score < 21 THEN there's no winner declared", function(){if (!playerHasWon) return perform.getElementText("results_area").should.eventually.equal("");});
     it("IF player's score = 21 THEN the player is declared the winner", function(){if (playerHasWon) return perform.getElementText("results_area").should.eventually.equal("WINNER: Player.");});
-    it("IF player's score > 21 THEN the dealer is declared the winner", function(){if (dealerHasWon) return perform.getElementText("results_area").should.eventually.equal("WINNER: Dealer.");});
   })
 
 })

@@ -5,10 +5,10 @@ var chai = require("chai");
 chai.should();
 
 // import the functions
-const {buildADeckOfCards, shuffleADeckOfCards, buildAndShuffleADeckOfCards, deal, getHandString, getScore, checkScores} = require("../../src/includes/scripts/cards.js");
+const {buildADeckOfCards, shuffleADeckOfCards, buildAndShuffleADeckOfCards, deal, getHandString, getScore, checkScores} = require("../../../src/includes/scripts/cards.js");
 
     
-    describe("TC004: VERIFY THE END-GAME FUNCTIONS", function(){
+    describe("VERIFY THE END-GAME FUNCTIONS", function(){
 
       describe("01: Determine who the winner is", function(){
 

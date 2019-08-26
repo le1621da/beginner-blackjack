@@ -5,9 +5,9 @@ var chai = require("chai");
 chai.should();
 
 // import the functions
-const {buildADeckOfCards, shuffleADeckOfCards, buildAndShuffleADeckOfCards, deal, getHandString, getScore, checkScores} = require("../../src/includes/scripts/cards.js");
+const {buildADeckOfCards, shuffleADeckOfCards, buildAndShuffleADeckOfCards, deal, getHandString, getScore, checkScores} = require("../../../src/includes/scripts/cards.js");
   
-  describe("TC002: VERIFY THE DEALING FUNCTIONS", function(){
+  describe("VERIFY THE DEALING FUNCTIONS", function(){
     
     describe("01: Check the state of the game and deck after the first card is dealt", function(){
 
